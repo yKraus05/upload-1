@@ -10,7 +10,7 @@ import { extname } from 'path';
 export class ArquivoController {
   constructor(private readonly arquivoService: ArquivoService) {}
 
- @Post('upload')
+  @Post('upload')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -25,8 +25,9 @@ export class ArquivoController {
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
     if (!file) {
-       throw new BadRequestException('Nenhum arquivo enviado.');
+      throw new BadRequestException('Nenhum arquivo enviado.');
     }
+    return this.arquivoService.create(file);
   }
 
   @Get()
