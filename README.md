@@ -7,7 +7,7 @@ API desenvolvida com NestJS para upload, listagem e remoção de arquivos (apena
 # 👨‍💻 Autor
 
 Lucas Borges
-GitHub: https://github.com/LucasBorges2009
+GitHub: https://github.com/yKraus05
 
 ---
 
@@ -23,7 +23,7 @@ npm install @types/multer
 Node.js instalado
 npm ou yarn
 📦 Instalação
-git clone https://github.com/LucasBorges2009/upload.git
+git clone https://github.com/yKraus05/upload.git
 cd upload
 npm install
 ▶️ Rodando o projeto

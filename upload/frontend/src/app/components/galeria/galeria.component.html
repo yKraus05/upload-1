@@ -1,38 +1,40 @@
-<div class="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
+<div class="min-h-screen bg-linear-to-tr from-zinc-950 via-slate-900 to-zinc-950 p-8 antialiased selection:bg-violet-500/30 selection:text-violet-200">
   <div class="max-w-7xl mx-auto">
-    <!-- 🎯 Header -->
-    <div class="mb-12 text-center">
-      <h1 class="text-5xl font-black text-white mb-3">
+    <div class="mb-16 text-center">
+      <h1 class="text-6xl font-extrabold tracking-tight bg-linear-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent mb-4">
         📸 Galeria de Fotos
       </h1>
-      <p class="text-slate-300 text-lg">
-        Faça upload de suas imagens (máximo 5MB)
+      <p class="text-zinc-400 text-lg font-medium tracking-wide max-w-md mx-auto">
+        Faça upload de suas imagens com segurança <span class="text-violet-400 font-semibold">(máximo 5MB)</span>
       </p>
     </div>
 
-    <!-- 📤 Área de Upload -->
-    <div class="mb-10">
-      <div class="bg-white/5 border-2 border-dashed border-blue-400/50 rounded-lg p-8 backdrop-blur-sm hover:border-blue-400 transition-colors">
-        <label class="flex flex-col items-center justify-center cursor-pointer">
-          <div class="text-center mb-6">
-            <svg
-              class="w-16 h-16 mx-auto text-blue-400 mb-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-              />
-            </svg>
-            <p class="text-white font-semibold text-lg">
-              Arraste imagens aqui ou clique para selecionar
+    <div class="mb-14">
+      <div class="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-10 backdrop-blur-md hover:border-violet-500/50 transition-all duration-300 shadow-xl shadow-black/40 group relative overflow-hidden">
+        <div class="absolute -inset-px bg-linear-to-r from-violet-500 to-fuchsia-500 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
+        
+        <label class="flex flex-col items-center justify-center cursor-pointer relative z-10">
+          <div class="text-center mb-4">
+            <div class="w-16 h-16 mx-auto bg-zinc-800/50 rounded-xl flex items-center justify-center border border-zinc-700/50 mb-5 group-hover:scale-110 group-hover:border-violet-400/50 transition-transform duration-300">
+              <svg
+                class="w-8 h-8 text-zinc-400 group-hover:text-violet-400 transition-colors"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                />
+              </svg>
+            </div>
+            <p class="text-zinc-200 font-medium text-lg mb-1">
+              Arraste imagens aqui ou <span class="text-violet-400 group-hover:underline">clique para selecionar</span>
             </p>
-            <p class="text-slate-400 text-sm mt-2">
-              Formatos: JPG, PNG, GIF, WEBP (até 5MB)
+            <p class="text-zinc-500 text-sm mt-2">
+              Formatos aceitos: JPG, PNG, GIF, WEBP
             </p>
           </div>
           <input
@@ -44,26 +46,24 @@
           />
         </label>
 
-        <!-- 🔄 Estado de Envio -->
         @if (enviando()) {
-          <div class="mt-6 text-center">
-            <div class="inline-flex items-center space-x-3">
+          <div class="mt-6 text-center relative z-10">
+            <div class="inline-flex items-center space-x-3 bg-zinc-950/60 backdrop-blur-md px-5 py-2.5 rounded-full border border-zinc-800 animate-pulse">
               <div
-                class="animate-spin h-5 w-5 border-3 border-blue-400 border-t-transparent rounded-full"
+                class="animate-spin h-4 w-4 border-2 border-violet-400 border-t-transparent rounded-full"
               ></div>
-              <span class="text-blue-400 font-medium">Enviando arquivo...</span>
+              <span class="text-violet-400 font-medium text-sm">Processando e enviando arquivo...</span>
             </div>
           </div>
         }
       </div>
 
-      <!-- 📬 Mensagens -->
       @if (mensagem()) {
         <div
-          class="mt-4 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-400 flex items-center space-x-3 animate-in"
+          class="mt-4 p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl text-emerald-400 flex items-center space-x-3 shadow-lg shadow-emerald-950/20"
         >
           <svg
-            class="w-5 h-5 shrink-0"
+            class="w-5 h-5 shrink-0 text-emerald-400"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -73,16 +73,16 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span>{{ mensagem() }}</span>
+          <span class="text-sm font-medium">{{ mensagem() }}</span>
         </div>
       }
 
       @if (erro()) {
         <div
-          class="mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 flex items-center space-x-3 animate-in"
+          class="mt-4 p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl text-rose-400 flex items-center space-x-3 shadow-lg shadow-rose-950/20"
         >
           <svg
-            class="w-5 h-5 shrink-0"
+            class="w-5 h-5 shrink-0 text-rose-400"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -92,25 +92,24 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span>{{ erro() }}</span>
+          <span class="text-sm font-medium">{{ erro() }}</span>
         </div>
       }
     </div>
 
-    <!-- 🖼️ Grid de Galeria -->
-    <div class="space-y-6">
-      <div class="flex justify-between items-center">
-        <h2 class="text-2xl font-bold text-white">
-          Suas Fotos
-          <span class="text-blue-400 text-lg">({{ arquivos().length }})</span>
+    <div class="space-y-8">
+      <div class="flex justify-between items-center border-b border-zinc-800/60 pb-5">
+        <h2 class="text-3xl font-bold text-white tracking-tight">
+          Sua Coleção
+          <span class="text-zinc-500 font-normal text-xl ml-2">({{ arquivos().length }} itens)</span>
         </h2>
         <button
           (click)="carregarArquivos()"
           [disabled]="carregando()"
-          class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors disabled:opacity-50"
+          class="px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 hover:border-zinc-700 rounded-xl font-medium text-sm transition-all shadow-md active:scale-95 disabled:opacity-50 flex items-center"
         >
           <svg
-            class="w-5 h-5 inline mr-2"
+            class="w-4 h-4 mr-2 text-zinc-400"
             [class.animate-spin]="carregando()"
             fill="none"
             stroke="currentColor"
@@ -127,77 +126,72 @@
         </button>
       </div>
 
-      <!-- 📊 Estado de Carregamento -->
       @if (carregando()) {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           @for (i of [1, 2, 3, 4, 5, 6]; track i) {
-            <div class="bg-white/5 rounded-lg overflow-hidden h-64 animate-pulse">
-              <div class="w-full h-full bg-linear-to-r from-slate-700 to-slate-800"></div>
+            <div class="bg-zinc-900/40 border border-zinc-800/50 rounded-2xl overflow-hidden h-72 animate-pulse">
+              <div class="w-full h-48 bg-zinc-800/50"></div>
+              <div class="p-4 space-y-3">
+                <div class="h-4 bg-zinc-800/50 rounded-sm w-2/3"></div>
+                <div class="h-3 bg-zinc-800/30 rounded-sm w-1/2"></div>
+              </div>
             </div>
           }
         </div>
       }
 
-      <!-- ✅ Grid de Imagens -->
       @if (!carregando()) {
         @if (arquivos().length > 0) {
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @for (arquivo of arquivos(); track arquivo.filename) {
               <div
-                class="group bg-white/5 rounded-lg overflow-hidden border border-white/10 hover:border-blue-400/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 hover:-translate-y-1"
+                class="group bg-zinc-900/30 rounded-2xl overflow-hidden border border-zinc-800/80 hover:border-violet-500/40 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-violet-500/5 hover:-translate-y-1"
               >
-                <!-- Placeholder para imagem -->
                 <div
-                  class="w-full h-48 bg-linear-to-br from-slate-700 via-slate-800 to-slate-900 flex items-center justify-center overflow-hidden relative"
+                  class="w-full h-48 bg-zinc-950 flex items-center justify-center overflow-hidden relative"
                 >
-                  <!-- Imagem Real -->
                   <img
                     [src]="'http://localhost:3000/uploads/' + arquivo.filename"
                     [alt]="arquivo.filename"
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     (error)="onImageError($event)"
                   />
 
-                  <!-- Label do arquivo -->
                   <div
-                    class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center"
+                    class="absolute inset-0 bg-zinc-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4"
                   >
-                    <p class="text-white text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium break-all">
+                    <p class="text-zinc-200 text-center text-xs font-mono break-all line-clamp-3">
                       {{ arquivo.filename }}
                     </p>
                   </div>
                 </div>
 
-                <!-- Informações -->
-                <div class="p-4 bg-white/5 backdrop-blur-sm">
-                  <p class="text-white font-semibold text-sm truncate mb-2">
+                <div class="p-4 bg-zinc-900/20 backdrop-blur-xs border-t border-zinc-800/50">
+                  <p class="text-zinc-200 font-semibold text-sm truncate mb-3" [title]="arquivo.filename">
                     {{ arquivo.filename }}
                   </p>
 
-                  <div class="space-y-2 text-xs text-slate-400">
-                    <div class="flex justify-between">
-                      <span>Tamanho:</span>
-                      <span class="text-blue-400">
+                  <div class="space-y-1.5 text-xs text-zinc-400 font-medium">
+                    <div class="flex justify-between items-center">
+                      <span class="text-zinc-500">Tamanho:</span>
+                      <span class="text-zinc-300 bg-zinc-800/40 px-2 py-0.5 rounded-md text-[11px]">
                         {{ formatarTamanho(arquivo.size) }}
                       </span>
                     </div>
-                    <div class="flex justify-between">
-                      <span>Data:</span>
-                      <span class="text-blue-400">
+                    <div class="flex justify-between items-center">
+                      <span class="text-zinc-500">Enviado em:</span>
+                      <span class="text-zinc-400 font-normal">
                         {{ formatarData(arquivo.criado) }}
                       </span>
                     </div>
                   </div>
 
-                  <!-- Botão Deletar -->
                   <button
                     (click)="removerArquivo(arquivo.filename)"
-                    class="w-full mt-4 px-3 py-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 rounded font-medium text-sm transition-colors flex items-center justify-center space-x-2 group/btn"
+                    class="w-full mt-4 px-3 py-2 bg-zinc-800/30 hover:bg-rose-500/10 border border-zinc-800 hover:border-rose-500/20 text-zinc-400 hover:text-rose-400 rounded-xl font-medium text-xs transition-all duration-200 flex items-center justify-center space-x-2 group/btn"
                   >
                     <svg
-                      class="w-4 h-4"
+                      class="w-3.5 h-3.5 text-zinc-500 group-hover/btn:text-rose-400 transition-colors"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -209,33 +203,34 @@
                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                       />
                     </svg>
-                    <span>Remover</span>
+                    <span>Remover imagem</span>
                   </button>
                 </div>
               </div>
             }
           </div>
         } @else {
-          <!-- Mensagem quando não há imagens -->
-          <div class="text-center py-16">
-            <svg
-              class="w-20 h-20 mx-auto text-slate-600 mb-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-            <p class="text-slate-400 text-lg font-medium">
-              Nenhuma imagem encontrada
+          <div class="text-center py-24 bg-zinc-900/10 border border-dashed border-zinc-800 rounded-2xl backdrop-blur-xs">
+            <div class="w-16 h-16 mx-auto bg-zinc-900/60 rounded-full flex items-center justify-center border border-zinc-800 mb-4">
+              <svg
+                class="w-7 h-7 text-zinc-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <p class="text-zinc-400 text-lg font-medium">
+              Sua galeria está vazia
             </p>
-            <p class="text-slate-500 text-sm mt-2">
-              Envie sua primeira imagem para começar
+            <p class="text-zinc-500 text-sm mt-1">
+              Selecione ou solte arquivos acima para preencher este espaço.
             </p>
           </div>
         }
