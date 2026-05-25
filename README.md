@@ -8,7 +8,7 @@ Sistema completo para upload, listagem, visualização e remoção de imagens, c
 ## ✨ Funcionalidades
 
 <<<<<<< HEAD
-Lucas Borges
+Gabriel klaumann kraus
 GitHub: https://github.com/yKraus05
 =======
 - **Upload de imagens** (jpg, jpeg, png, gif, webp) com limite de 5MB por arquivo
@@ -26,7 +26,7 @@ GitHub: https://github.com/yKraus05
 
 ## 👨‍💻 Autor
 
-Lucas Borges  
+Gabriel klaumann
 [GitHub](https://github.com/yKraus05)
 
 ---
