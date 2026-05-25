@@ -9,10 +9,14 @@ import {
   UseInterceptors,
   UploadedFile,
   BadRequestException,
+  UseFilters,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { ArquivoService } from './arquivo.service';
 import { UpdateArquivoDto } from './dto/update-arquivo.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { MulterExceptionFilter } from '../multer-exception.filter';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
@@ -20,8 +24,16 @@ import { extname } from 'path';
 export class ArquivoController {
   constructor(private readonly arquivoService: ArquivoService) {}
 
-  // ✅ UPLOAD (CORRIGIDO)
+  /**
+   * ✅ UPLOAD COM VALIDAÇÃO DE TAMANHO
+   * Restrição: Máximo 5MB
+   * 
+   * COMENTÁRIO: O FileInterceptor possui configuração 'limits.fileSize: 5 * 1024 * 1024'
+   * que rejeita arquivos > 5MB. Se excedido, dispara MulterError com código 'LIMIT_FILE_SIZE'.
+   * O UseFilters(MulterExceptionFilter) captura esse erro e retorna HTTP 413 com JSON descritivo.
+   */
   @Post('upload')
+  @UseFilters(MulterExceptionFilter)
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -34,8 +46,9 @@ export class ArquivoController {
         },
       }),
 
+      // 🔴 RESTRIÇÃO: Limite máximo de 5MB
       limits: {
-        fileSize: 5 * 1024 * 1024,
+        fileSize: 5 * 1024 * 1024, // 5MB em bytes
       },
 
       fileFilter: (req, file, callback) => {

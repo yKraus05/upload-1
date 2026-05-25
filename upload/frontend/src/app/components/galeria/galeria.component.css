@@ -1,0 +1,34 @@
+/* Galeria Component Styles */
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+/* Animações customizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Efeito de hover em cards */
+.group {
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Scroll smooth */
+html {
+  scroll-behavior: smooth;
+}
